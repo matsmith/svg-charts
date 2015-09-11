@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>reCAPTCHA demo: Simple page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.openVideo').click(function(e){
+				e.preventDefault();
+				$('#overlay').append('<iframe id="video" src="' + $(this).attr("href") + '" width="536" height="302" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+				$('#overlay').css({ 'display':'block', 'z-index':'1', 'position':'absolute', 'top':'20%', 'left':'20%' });
+			});
+
+			window.update = function(percent){
+				var bar = $('#bar');
+				var percentLabel = $('#percentLabel');
+				var percentOffset = ((100-percent)/100)*(Math.PI*(90*2));
+				bar.attr('stroke-dashoffset', percentOffset);
+				percentLabel.text(percent + '%');
+				console.log(bar.attr('stroke-dashoffset'));
+			}
+		});
+	</script>
+</head>
+<body>
+	<!-- Stacked Bar Graph -->
+	<svg class="sleep-day-result" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 24 3" preserveaspectratio="xMidYMid">
+		<text text-anchor="end" x="1.9" y=".7" font-family="Verdana" font-size=".3">Tue. 8/18</text>
+		<line class="sleep-day-result__background" x1="2" y1="0.5" x2="22" y2="0.5" style="stroke:rgba(0,0,0,0.2);"/>
+		<line class="sleep-day-result__in-bed" x1="6" y1="0.5" x2="17" y2="0.5" style="stroke:rgba(253,152,39,1);"/>
+		<line class="sleep-day-result__asleep" x1="7" y1="0.5" x2="12" y2="0.5" style="stroke:rgba(127,15,126,1);"/>
+		<line class="sleep-day-result__asleep" x1="12.5" y1="0.5" x2="16.5" y2="0.5" style="stroke:rgba(127,15,126,1);"/>
+		<text x="22.1" y=".7" font-family="Verdana" font-size=".3">Wed 8/19</text>
+
+		<text text-anchor="end" x="1.9" y="1.7" font-family="Verdana" font-size=".3">Mon. 8/17</text>
+		<line class="sleep-day-result__background" x1="2" y1="1.6" x2="22" y2="1.6" style="stroke:rgba(0,0,0,0.2);"/>
+		<line class="sleep-day-result__in-bed" x1="8" y1="1.6" x2="17" y2="1.6" style="stroke:rgba(253,152,39,1);"/>
+		<line class="sleep-day-result__asleep" x1="9" y1="1.6" x2="11" y2="1.6" style="stroke:rgba(127,15,126,1);"/>
+		<line class="sleep-day-result__asleep" x1="12.25" y1="1.6" x2="13" y2="1.6" style="stroke:rgba(127,15,126,1);"/>
+		<line class="sleep-day-result__asleep" x1="13.5" y1="1.6" x2="16.5" y2="1.6" stroke-dasharray=".3, .02" style="stroke:rgba(127,15,126,1);"/>
+		<text x="22.1" y="1.7" font-family="Verdana" font-size=".3">Mon 8/18</text>
+	</svg>
+
+	<!-- Circle -->
+	<!-- PercentStroke = ((100-percent)/100)*(PI*(radius*2)) -->
+	<svg class="sleep-avg-result" width="200" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+		<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0" stroke="#999999" stroke-width="1em" transform="rotate(-90 100 100)"></circle>
+		<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="282" stroke="#7F0F7E" stroke-width="1em" transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 1s linear;"></circle>
+		<text id="percentLabel" text-anchor="middle" x="100" y="116" font-family="Helvetica Neue" font-size="50" style="font-weight: 100;">50%</text>
+	</svg>
+
+	<!-- Battery -->
+	<svg class="energy-avg-result" width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+		<!-- battery body stroke -->
+		<line class="battery__body-stroke" x1="1" y1="69" x2="155" y2="69" stroke="#d3d3d3" stroke-width="1"  style=""/>
+		<line class="battery__body-stroke" x1="1" y1="131" x2="155" y2="131" stroke="#d3d3d3" stroke-width="1"  style=""/>
+		<line class="battery__body-stroke" x1="1" y1="69" x2="1" y2="131" stroke="#d3d3d3" stroke-width="1"  style=""/>
+		<line class="battery__body-stroke" x1="155" y1="69" x2="155" y2="131" stroke="#d3d3d3" stroke-width="1"  style=""/>
+
+		<!-- battery pin stroke -->
+		<line class="battery__pin-stroke" x1="155" y1="89" x2="167" y2="89" stroke="#d3d3d3" stroke-width="1"  style=""/>
+		<line class="battery__pin-stroke" x1="167" y1="89" x2="167" y2="111" stroke="#d3d3d3" stroke-width="1"  style=""/>
+		<line class="battery__pin-stroke" x1="155" y1="111" x2="167" y2="111" stroke="#d3d3d3" stroke-width="1"  style=""/>
+
+		<!-- battery body -->
+		<line class="battery__background-body" x1="2" y1="100" x2="154" y2="100" stroke="#C9C9C9" stroke-width="60"  style=""/>
+
+		<!-- battery pin -->
+		<line class="battery__background-pin" x1="156" y1="100" x2="166" y2="100" stroke="#C9C9C9" stroke-width="20"  style=""/>
+
+		<!-- battery charge -->
+		<line class="battery__body-charge" x1="2" y1="100" x2="115.2" y2="100" stroke="#149718" stroke-width="60"  style=""/>
+	</svg>
+</body>
+</html>
