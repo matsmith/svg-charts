@@ -1,16 +1,8 @@
 <html>
 <head>
 	<title>reCAPTCHA demo: Simple page</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<script type="text/javascript">
 		$(function(){
-			$('.openVideo').click(function(e){
-				e.preventDefault();
-				$('#overlay').append('<iframe id="video" src="' + $(this).attr("href") + '" width="536" height="302" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
-				$('#overlay').css({ 'display':'block', 'z-index':'1', 'position':'absolute', 'top':'20%', 'left':'20%' });
-			});
-
 			window.update = function(percent){
 				var bar = $('#bar');
 				var percentLabel = $('#percentLabel');
