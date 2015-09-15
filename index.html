@@ -27,26 +27,29 @@
 	<!-- Stacked Bar Graph -->
 	<svg class="sleep-day-result" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 24 3" preserveaspectratio="xMidYMid">
 		<text text-anchor="end" x="1.9" y=".7" font-family="Verdana" font-size=".3">Tue. 8/18</text>
-		<line class="sleep-day-result__background" x1="2" y1="0.5" x2="22" y2="0.5" style="stroke:rgba(0,0,0,0.2);"/>
-		<line class="sleep-day-result__in-bed" x1="6" y1="0.5" x2="17" y2="0.5" style="stroke:rgba(253,152,39,1);"/>
-		<line class="sleep-day-result__asleep" x1="7" y1="0.5" x2="12" y2="0.5" style="stroke:rgba(127,15,126,1);"/>
-		<line class="sleep-day-result__asleep" x1="12.5" y1="0.5" x2="16.5" y2="0.5" style="stroke:rgba(127,15,126,1);"/>
+		<line class="sleep-day-result__background" x1="2" y1="0.5" x2="22" y2="0.5" stroke="transparent"/>
+		<line class="sleep-day-result__in-bed" x1="6" y1="0.5" x2="17" y2="0.5" stroke="#6CD6E1"/>
+		<line class="sleep-day-result__asleep" x1="7" y1="0.5" x2="12" y2="0.5" stroke="#195B63"/>
+		<line class="sleep-day-result__asleep" x1="12.5" y1="0.5" x2="16.5" y2="0.5" stroke="#195B63"/>
 		<text x="22.1" y=".7" font-family="Verdana" font-size=".3">Wed 8/19</text>
 
 		<text text-anchor="end" x="1.9" y="1.7" font-family="Verdana" font-size=".3">Mon. 8/17</text>
-		<line class="sleep-day-result__background" x1="2" y1="1.6" x2="22" y2="1.6" style="stroke:rgba(0,0,0,0.2);"/>
-		<line class="sleep-day-result__in-bed" x1="8" y1="1.6" x2="17" y2="1.6" style="stroke:rgba(253,152,39,1);"/>
-		<line class="sleep-day-result__asleep" x1="9" y1="1.6" x2="11" y2="1.6" style="stroke:rgba(127,15,126,1);"/>
-		<line class="sleep-day-result__asleep" x1="12.25" y1="1.6" x2="13" y2="1.6" style="stroke:rgba(127,15,126,1);"/>
-		<line class="sleep-day-result__asleep" x1="13.5" y1="1.6" x2="16.5" y2="1.6" stroke-dasharray=".3, .02" style="stroke:rgba(127,15,126,1);"/>
+		<line class="sleep-day-result__background" x1="2" y1="1.6" x2="22" y2="1.6" stroke="transparent"/>
+		<line class="sleep-day-result__in-bed" x1="8" y1="1.6" x2="17" y2="1.6" stroke="#6CD6E1"/>
+		<line class="sleep-day-result__asleep" x1="9" y1="1.6" x2="11" y2="1.6" stroke="#195B63"/>
+		<line class="sleep-day-result__asleep" x1="12.25" y1="1.6" x2="13" y2="1.6" stroke="#195B63"/>
+		<line class="sleep-day-result__asleep" x1="13.5" y1="1.6" x2="16.5" y2="1.6" stroke-dasharray=".3, .02" stroke="#195B63"/>
 		<text x="22.1" y="1.7" font-family="Verdana" font-size=".3">Mon 8/18</text>
+
+		<rect x="2" y="0" width="19.99" height="2.1" stroke="#999" fill="transparent" stroke-width=".02" />
+		<line class="sleep-day-result__ticks" x1="1.99" y1="2.2" x2="22" y2="2.2" stroke-dasharray=".02, .8493" stroke="#999" stroke-width=".2"/>
 	</svg>
 
 	<!-- Circle -->
 	<!-- PercentStroke = ((100-percent)/100)*(PI*(radius*2)) -->
 	<svg class="sleep-avg-result" width="200" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
-		<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0" stroke="#999999" stroke-width="1em" transform="rotate(-90 100 100)"></circle>
-		<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="282" stroke="#7F0F7E" stroke-width="1em" transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 1s linear;"></circle>
+		<circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0" stroke="#9EA09E" stroke-width="1em" transform="rotate(-90 100 100)"></circle>
+		<circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="282" stroke="#6CD6E1" stroke-width="1em" transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 1s linear;"></circle>
 		<text id="percentLabel" text-anchor="middle" x="100" y="116" font-family="Helvetica Neue" font-size="50" style="font-weight: 100;">50%</text>
 	</svg>
 
