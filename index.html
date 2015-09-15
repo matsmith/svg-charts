@@ -1,15 +1,24 @@
 <html>
 <head>
-	<title>reCAPTCHA demo: Simple page</title>
+	<title>SVN Charts</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			window.update = function(percent){
+			window.updateCircle = function(percent){
 				var bar = $('#bar');
 				var percentLabel = $('#percentLabel');
 				var percentOffset = ((100-percent)/100)*(Math.PI*(90*2));
 				bar.attr('stroke-dashoffset', percentOffset);
 				percentLabel.text(percent + '%');
 				console.log(bar.attr('stroke-dashoffset'));
+			}
+			window.updateCharge = function(percent){
+				var bar = $('#charge');
+				var energy = $('#energy')
+				var percentOffset = (percent*.1)*15.2;
+				bar.attr('x2', percentOffset);
+				energy.attr('width', percentOffset);
+				console.log(bar.attr('x2'));
 			}
 		});
 	</script>
@@ -62,7 +71,23 @@
 		<line class="battery__background-pin" x1="156" y1="100" x2="166" y2="100" stroke="#C9C9C9" stroke-width="20"  style=""/>
 
 		<!-- battery charge -->
-		<line class="battery__body-charge" x1="2" y1="100" x2="115.2" y2="100" stroke="#149718" stroke-width="60"  style=""/>
+		<line id="charge" class="battery__body-charge" x1="2" y1="100" x2="115.2" y2="100" stroke="#149718" stroke-width="60"  style="transition: x2 1s linear;"/>
+	</svg>
+
+
+	<!-- Battery V2 -->
+	<svg class="energy-avg-result" width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+		<!-- battery body stroke -->
+		<rect x="1" y="68" width="156" height="64" rx="5" ry="5" stroke-width="2" fill="transparent" stroke="#9FA19F"/>
+
+		<!-- battery Charge -->
+		<rect id="energy" x="3" y="70" width="91.2" height="60" rx="5" ry="5" fill="#34BA5E" style="transition: width 1s linear;"/>;
+
+		<!-- battery pin -->
+		<rect x="157" y="82" width="3" height="35" rx="1" ry="1" fill="#9FA19F"/> <!-- Pin Base -->
+		<rect x="157" y="87" width="8" height="25" rx="2" ry="2" fill="#9FA19F"/> <!-- Pin -->
+
 	</svg>
 </body>
 </html>
